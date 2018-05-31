@@ -1,6 +1,8 @@
 FROM ubuntu:18.04
 MAINTAINER TheCreatorzOne
 
+ENV DEBIAN_FRONTEND noninteractive
+
 RUN useradd -m radarr && \
     apt-get update -y && \
     apt-get install -y libmono-cil-dev && \
