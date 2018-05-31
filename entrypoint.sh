@@ -1,7 +1,7 @@
 #!/bin/sh -e
 
 # Default configuration file
-if [ ! -f /config/radarr.conf ]
+if [ ! -f /etc/init/radarr.conf ]
 then
 	cp /default/radarr.conf /etc/init/radarr.conf
 fi
