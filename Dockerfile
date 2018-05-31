@@ -5,6 +5,7 @@ RUN useradd -m radarr && \
     apt-get update -y && \
     apt-get install -y libmono-cil-dev && \
     apt-get install -y curl && \
+    apt-get install wget && \
     wget https://mediaarea.net/repo/deb/repo-mediaarea_1.0-5_all.deb && dpkg -i repo-mediaarea_1.0-5_all.deb && \
     apt-get update -y && \
     apt-get install -y mediainfo && \
