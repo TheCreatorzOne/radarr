@@ -19,7 +19,7 @@ RUN useradd -m radarr && \
     wget https://github.com/Radarr/Radarr/releases/download/v0.2.0.1067/Radarr.develop.0.2.0.1067.linux.tar.gz && \
     tar -xf Radarr* -C /opt/ && \
     chown -R radarr /opt/Radarr && \
-    chmod -R 0775 /opt/Radarr && \
+    chmod -R 2777 /opt/Radarr && \
     ln -s /opt/Radarr /config && \
     cd /config && \
     ls -la
@@ -30,4 +30,4 @@ EXPOSE 7878
 
 VOLUME ["/config"]
 
-CMD ["cd /opt/Radarr && mono Radarr.exe"]
+CMD ["cd /config && mono Radarr.exe"]
