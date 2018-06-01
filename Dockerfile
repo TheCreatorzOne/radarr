@@ -16,14 +16,17 @@ RUN useradd -m radarr && \
     apt-get install -y sqlite3 && \
     apt-get install -y systemd && \
     cd /opt && \
-    curl -L -O $( curl -s https://api.github.com/repos/Radarr/Radarr/releases | grep linux.tar.gz | grep browser_download_url | head -1 | cut -d \" -f 4 ) && \
-    tar -xvzf Radarr.develop.*.linux.tar.gz && \
+    wget https://github.com/Radarr/Radarr/releases/download/v0.2.0.1067/Radarr.develop.0.2.0.1067.linux.tar.gz && \
+    tar -xf Radarr* -C /opt/ && \
     chown -R radarr /opt/Radarr && \
     chmod -R 0775 /opt/Radarr && \
-    ln -s /opt/Radarr /config
+    ln -s /opt/Radarr /config && \
+    cd /opt/Radarr
 
 USER radarr
 
 EXPOSE 7878
 
 VOLUME ["/config"]
+
+CMD ["--debug /opt/Radarr/Radarr.exe -nobrowser"]
