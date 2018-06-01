@@ -27,7 +27,7 @@ ADD radarr.service /etc/systemd/system/radarr.service
 
 RUN chown -R radarr /etc/systemd/system/radarr.service && \
     chmod -R 0775 /etc/systemd/system/radarr.service && \
-    systemctl enable radarr.service && \
+    systemctl enable radarr.service
 
 USER radarr
 
