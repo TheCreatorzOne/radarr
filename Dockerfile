@@ -27,12 +27,11 @@ ADD radarr.service /etc/systemd/system/radarr.service
 
 RUN chown -R radarr /etc/systemd/system/radarr.service && \
     chmod -R 0775 /etc/systemd/system/radarr.service && \
-    systemctl enable radarr.service
+    systemctl enable radarr.service && \
+    systemctl start radarr.service
 
 USER radarr
 
 EXPOSE 7878
 
 VOLUME ["/config"]
-
-CMD ["systemctl start radarr.service"]
