@@ -23,7 +23,7 @@ RUN useradd -m radarr && \
     mkdir -p /etc/init && \
     ln -s /etc/init /service
 
-ADD radarr.conf /default/radarr.conf
+ADD radarr.conf /service/radarr.conf
 ADD entrypoint.sh /entrypoint.sh
 
 RUN chown -R radarr /entrypoint.sh && \
@@ -34,7 +34,5 @@ USER radarr
 EXPOSE 7878
 
 VOLUME ["/config"]
-
-ENTRYPOINT ["/entrypoint.sh"]
 
 CMD ["start radarr"]
