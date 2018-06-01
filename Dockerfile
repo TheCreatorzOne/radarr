@@ -20,8 +20,7 @@ RUN useradd -m radarr && \
     tar -xf Radarr* -C /opt/ && \
     chown -R radarr /opt/Radarr && \
     chmod -R 0775 /opt/Radarr && \
-    ln -s /opt/Radarr /config && \
-    cd /opt/Radarr
+    ln -s /opt/Radarr /config
 
 USER radarr
 
@@ -29,4 +28,4 @@ EXPOSE 7878
 
 VOLUME ["/config"]
 
-CMD ["--debug /opt/Radarr/Radarr.exe -nobrowser"]
+CMD ["cd /opt/Radarr && mono Radarr.exe"]
