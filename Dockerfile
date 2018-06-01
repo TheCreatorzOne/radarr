@@ -20,14 +20,14 @@ RUN useradd -m radarr && \
     chown -R radarr /opt/Radarr && \
     chmod -R 0775 /opt/Radarr && \
     ln -s /opt/Radarr /config && \
-    mkdir -p /etc/init && \
-    ln -s /etc/init /service
+    mkdir -p /etc/systemd/system && \
+    ln -s /etc/systemd/system /service
 
-ADD radarr.conf /service/radarr.conf
-ADD entrypoint.sh /entrypoint.sh
+ADD radarr.service /service/radarr.service
 
-RUN chown -R radarr /entrypoint.sh && \
-    chmod -R 0775 /entrypoint.sh
+RUN chown -R radarr /radarr.service && \
+    chmod -R 0775 /radarr.service && \
+    systemctl enable radarr.service && \
 
 USER radarr
 
@@ -35,4 +35,4 @@ EXPOSE 7878
 
 VOLUME ["/config"]
 
-CMD ["start radarr"]
+CMD ["systemctl start radarr.service"]
