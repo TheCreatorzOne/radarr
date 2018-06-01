@@ -28,4 +28,4 @@ EXPOSE 7878
 
 VOLUME ["/config"]
 
-CMD ["mono --debug /opt/Radarr/Radarr.exe -nobrowser -data=/opt/Radarr"]
+CMD ["mono --debug /config/Radarr.exe -nobrowser -data=/config"]
