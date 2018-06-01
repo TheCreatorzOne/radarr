@@ -14,7 +14,7 @@ RUN useradd -m radarr && \
     apt-get update -y && \
     apt-get install -y mono-devel && \
     apt-get install -y sqlite3 && \
-    apt-get install systemd && \
+    apt-get install -y systemd && \
     cd /opt && \
     curl -L -O $( curl -s https://api.github.com/repos/Radarr/Radarr/releases | grep linux.tar.gz | grep browser_download_url | head -1 | cut -d \" -f 4 ) && \
     tar -xvzf Radarr.develop.*.linux.tar.gz && \
