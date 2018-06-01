@@ -27,5 +27,3 @@ USER radarr
 EXPOSE 7878
 
 VOLUME ["/config"]
-
-CMD ["mono --debug /config/Radarr.exe -nobrowser -data=/config"]
