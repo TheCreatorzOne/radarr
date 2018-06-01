@@ -20,18 +20,12 @@ RUN useradd -m radarr && \
     tar -xvzf Radarr.develop.*.linux.tar.gz && \
     chown -R radarr /opt/Radarr && \
     chmod -R 0775 /opt/Radarr && \
-    ln -s /opt/Radarr /config && \
-    mkdir -p /etc/systemd/system
-
-ADD radarr.service /etc/systemd/system/radarr.service
-
-RUN chown -R radarr /etc/systemd/system/radarr.service && \
-    chmod -R 0775 /etc/systemd/system/radarr.service && \
-    systemctl enable radarr.service && \
-    systemctl start radarr.service
+    ln -s /opt/Radarr /config
 
 USER radarr
 
 EXPOSE 7878
 
 VOLUME ["/config"]
+
+CMD ["mono --debug /opt/Radarr/Radarr.exe -nobrowser -data=/opt/Radarr"]
