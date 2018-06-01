@@ -19,7 +19,9 @@ RUN useradd -m radarr && \
     tar -xvzf Radarr.develop.*.linux.tar.gz && \
     chown -R radarr /opt/Radarr && \
     chmod -R 0775 /opt/Radarr && \
-    ln -s /opt/Radarr /config
+    ln -s /opt/Radarr /config && \
+    mkdir -p /etc/init && \
+    ln -s /etc/init /service
 
 ADD radarr.conf /default/radarr.conf
 ADD entrypoint.sh /entrypoint.sh
