@@ -20,13 +20,12 @@ RUN useradd -m radarr && \
     chown -R radarr /opt/Radarr && \
     chmod -R 0775 /opt/Radarr && \
     ln -s /opt/Radarr /config && \
-    mkdir -p /etc/systemd/system && \
-    ln -s /etc/systemd/system /service
+    mkdir -p /etc/systemd/system
 
-ADD radarr.service /service/radarr.service
+ADD radarr.service /etc/systemd/system/radarr.service
 
-RUN chown -R radarr /radarr.service && \
-    chmod -R 0775 /radarr.service && \
+RUN chown -R radarr /etc/systemd/system/radarr.service && \
+    chmod -R 0775 /etc/systemd/system/radarr.service && \
     systemctl enable radarr.service && \
 
 USER radarr
